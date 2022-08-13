@@ -5,6 +5,7 @@ import {
   addDoc,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export const readData = async (table) => {
@@ -21,4 +22,9 @@ export const createData = async (table, data) => {
 export const updateData = async (table, id, data) => {
   const newDoc = doc(db, table, id);
   await updateDoc(newDoc, data);
+};
+
+export const deleteData = async (table, id) => {
+  const data = doc(db, table, id);
+  await deleteDoc(data);
 };
